@@ -10,6 +10,6 @@ def index():
     return render_template('tasks/index.html')
 
 # a simple page that says hello
-@bp.route('/form')
-def form():
-    return render_template('tasks/form.html')
+@bp.route('/add')
+def add():
+    return render_template('tasks/add.html')

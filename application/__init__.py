@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask 
+from flask import Flask
 
 def create_app(test_config=None):
     # create and configure the app
@@ -29,6 +29,6 @@ def create_app(test_config=None):
     from . import views
     app.register_blueprint(views.bp)
     app.add_url_rule('/', endpoint='index')
-    app.add_url_rule('/form', endpoint='')
+    app.add_url_rule('/add', endpoint='')
 
     return app
