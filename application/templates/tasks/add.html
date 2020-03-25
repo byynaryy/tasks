@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}Add a task{% endblock %}</h1>
+    <form method="post">
+    <label for="username">Title</label>
+    <input type="text" name="title" id="title" required>
+    <label for="description">Description</label>
+    <input type="textarea" name="description" id="description" required>
+    <label for="status">Status</label>
+    <select class="" name="status">
+        <option value="todo">Todo</option>
+        <option value="doing">Doing</option>
+        <option value="done">Done</option>
+    </select>
+    <label for="initialised">Initialised</label>
+    <input type="date" name="initialised" id="initialised" required>
+    <input type="submit" value="Submit">
+    </form>
+{% endblock %}

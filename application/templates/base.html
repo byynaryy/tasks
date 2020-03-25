@@ -1,0 +1,28 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{% endblock %} - Tasks</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='filename') }}">
+<div class="container">
+    <div class="">
+        <div id="header" class="">
+            <h1>Tasks Todo</h1>
+        </div>
+        <div class="row">
+            <div id="menu" class="">
+                <h3>Tasks</h3>
+                <ul class="nav flex-column">
+                    <li><a href="">home</a></li>
+                    <li><a href="">Add a task</a></li>
+                </ul>
+                <h4>Latest tasks</h4>
+            </div>
+            <div id="content" class="">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <hr>
+        <footer>
+        </footer>
+    </div>
+</div>
