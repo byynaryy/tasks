@@ -4,10 +4,10 @@ from application.database import Base
 class Task(Base):
     __tablename__ = 'tasks'
     id = Column(Integer, primary_key=True)
-    title = Column(String(255), unique=True, nullable=False)
-    description = Column(Text, unique=True, nullable=False)
-    status = Column(String(255), unique=True, nullable=False)
-    initialised = Column(DateTime, unique=True, nullable=False)
+    title = Column(String(255), nullable=False)
+    description = Column(Text, nullable=False)
+    status = Column(String(255), nullable=False)
+    initialised = Column(DateTime, nullable=False)
 
     def __init__(self, title=None, description=None, status=None, initialised=None):
         self.title = title
@@ -16,4 +16,4 @@ class Task(Base):
         self.initialised = initialised
 
     def __repr__(self):
-        return '<Task %r>' % (self.title)
+        return '<Task %r>' % (self.id)
