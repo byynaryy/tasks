@@ -11,7 +11,8 @@ bp = Blueprint('views', __name__)
 @bp.route('/')
 @bp.route('/tasks')
 def index():
-    return render_template('tasks/index.html')
+    tasks = db_session.query(Task).all()
+    return render_template('tasks/index.html', tasks=tasks)
 
 #
 @bp.route('/tasks/new', methods=['GET', 'POST'])

@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>Here is my tasks list</p>
+    <h2>List of tasks</h2>
+    {% for task in tasks %}
+        <div>{{ task['title'] }}{{ task['description'] }}{{ task['status'] }}{{ task['initialised'] }}</div>
+    {% endfor %}
 {% endblock %}
