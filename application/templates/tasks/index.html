@@ -3,6 +3,6 @@
 {% block content %}
     <h2>List of tasks</h2>
     {% for task in tasks %}
-        <div>{{ task['title'] }}{{ task['description'] }}{{ task['status'] }}{{ task['initialised'] }}<a href="{{ url_for('update', id=task['id']) }}">Update</a></div>
+        <div>{{ task['title'] }}{{ task['description'] }}{{ task['status'] }}{{ task['initialised'] }}<a href="{{ url_for('update_task', id=task['id']) }}">Update</a></div>
     {% endfor %}
 {% endblock %}
