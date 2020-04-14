@@ -35,6 +35,7 @@ def create_app(test_config=None):
     app.add_url_rule('/', endpoint='index')
     app.add_url_rule('/tasks/new', endpoint='new_task')
     app.add_url_rule('/tasks/<int:id>/update/', endpoint='update_task')
+    
 
     from .database import db_session
 

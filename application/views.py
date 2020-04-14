@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, render_template, request, url_for
+    Blueprint, render_template, request, redirect, url_for
 )
 from application.models import Task
 from application.database import db_session
@@ -36,15 +36,11 @@ def new_task():
 def update_task(id):
     task = db_session.query(Task).filter_by(id=id).one()
     if request.method == 'POST':
-        db_session.add(
-            Task(
-                title = request.form['title'],
-                description = request.form['description'],
-                status = request.form['status'],
-                initialised = request.form['initialised']
-            )
-        )
+        task.title = request.form['title'],
+        task.description = request.form['description'],
+        task.status = request.form['status'],
+        task.initialised = request.form['initialised']
         db_session.commit()
-        return render_template('tasks/index.html')
+        return redirect(url_for('index'))
     else:
         return render_template('tasks/updatetask.html', task=task)
