@@ -5,6 +5,7 @@
     {% for task in tasks %}
         <div>{{ task['title'] }}{{ task['description'] }}{{ task['status'] }}{{ task['initialised'] }}
              <a href="{{ url_for('update_task', id=task['id']) }}">Update</a>
+             <a href="{{ url_for('delete_task', id=task['id']) }}">Delete</a>
         </div>
     {% endfor %}
 {% endblock %}

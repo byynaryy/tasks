@@ -44,3 +44,11 @@ def update_task(id):
         return redirect(url_for('index'))
     else:
         return render_template('tasks/updatetask.html', task=task)
+
+#
+@bp.route('/tasks/<int:id>/delete/', methods=['GET', 'POST'])
+def delete_task(id):
+    task = db_session.query(Task).filter_by(id=id).one()
+    db_session.delete(task)
+    db_session.commit()
+    return redirect(url_for('index'))
