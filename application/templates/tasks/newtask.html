@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
-
+{% block scripts %}
+  {{ super() }}
+  {{ datepicker.loader() }} {# to load jQuery-ui #}
+  {{ datepicker.picker(id=".dp") }}
+{% endblock %}
 {% block content %}
     <h1>{% block title %}Add a task{% endblock %}</h1>
     <form action={{ url_for('new_task') }}  method="post">
@@ -14,7 +18,7 @@
         <option value="done">Done</option>
     </select>
     <label for="initialised">Initialised</label>
-    <input type="date" name="initialised" id="initialised" required>
+    <input type="text" name='initialised' class="form-control dp" />
     <input type="submit" value="Submit">
     </form>
 {% endblock %}

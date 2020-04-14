@@ -34,7 +34,7 @@ def new_task():
 #
 @bp.route('/tasks/<int:id>/update/', methods=['GET', 'POST'])
 def update_task(id):
-    task = db_session.query(Task).filter_by(id = id).one()
+    task = db_session.query(Task).filter_by(id=id).one()
     if request.method == 'POST':
         db_session.add(
             Task(
@@ -47,4 +47,4 @@ def update_task(id):
         db_session.commit()
         return render_template('tasks/index.html')
     else:
-        return render_template('tasks/updatetask.html', task = task)
+        return render_template('tasks/updatetask.html', task=task)
