@@ -1,6 +1,6 @@
 <!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}{% endblock %} - Tasks</title>
+<title>{% block title %}{% endblock %} Tasks</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 {% block scripts %}{% endblock %}
 <link rel="stylesheet" href="{{ url_for('static', filename='filename') }}">
@@ -17,8 +17,13 @@
                     <li><a href="{{ url_for('new_task') }}">Add a task</a></li>
                 </ul>
                 <h4>Latest tasks</h4>
+                {% for task in latest %}
+                    <div>
+                        {{ task['title'] }}{{ task['description'] }}{{ task['status'] }}{{ task['initialised'] }}
+                    </div>
+                {% endfor %}
             </div>
-            <div id="content" class="">
+            <div id="content" class="" >
                 {% block content %}
                 {% endblock %}
             </div>

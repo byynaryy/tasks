@@ -4,12 +4,12 @@ from flask import (
 from application.models import Task
 from application.database import db_session
 
-
 bp = Blueprint('views', __name__)
+
 
 #
 @bp.route('/')
-@bp.route('/tasks')
+@bp.route('/tasks/')
 def index():
     tasks = db_session.query(Task).all()
     return render_template('tasks/index.html', tasks=tasks)
@@ -52,3 +52,9 @@ def delete_task(id):
     db_session.delete(task)
     db_session.commit()
     return redirect(url_for('index'))
+
+#
+@bp.context_processor
+def latest_tasks():
+    latest = db_session.query(Task).order_by(Task.id)[0:3]
+    return dict(latest=latest)

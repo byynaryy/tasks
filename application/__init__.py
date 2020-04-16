@@ -5,6 +5,8 @@ from markupsafe import escape
 from flask_bootstrap import Bootstrap
 from flask_datepicker import datepicker
 
+from application.views import latest_tasks
+
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -36,7 +38,6 @@ def create_app(test_config=None):
     app.add_url_rule('/tasks/new', endpoint='new_task')
     app.add_url_rule('/tasks/<int:id>/update/', endpoint='update_task')
     app.add_url_rule('/tasks/<int:id>/delete/', endpoint='delete_task')
-
 
     from .database import db_session
 
