@@ -1,6 +1,7 @@
 from flask import (
     Blueprint, render_template, request, redirect, url_for
 )
+from datetime import datetime
 from application.models import Task
 from application.database import db_session
 
@@ -23,11 +24,11 @@ def new_task():
                 title = request.form['title'],
                 description = request.form['description'],
                 status = request.form['status'],
-                initialised = request.form['initialised']
+                initialised = datetime.utcnow()
             )
         )
         db_session.commit()
-        return render_template('tasks/index.html')
+        return redirect(url_for('index'))
     else:
         return render_template('tasks/newtask.html')
 
@@ -56,5 +57,5 @@ def delete_task(id):
 #
 @bp.context_processor
 def latest_tasks():
-    latest = db_session.query(Task).order_by(Task.id)[0:3]
+    latest = db_session.query(Task).order_by(Task.initialised.desc())[0:3]
     return dict(latest=latest)

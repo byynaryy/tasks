@@ -1,3 +1,5 @@
+from datetime import datetime
+from sqlalchemy.sql import func
 from sqlalchemy import Column, Integer, String, Text, DateTime
 from application.database import Base
 
@@ -7,7 +9,7 @@ class Task(Base):
     title = Column(String(255), nullable=False)
     description = Column(Text, nullable=False)
     status = Column(String(255), nullable=False)
-    initialised = Column(DateTime, nullable=False)
+    initialised = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     def __init__(self, title=None, description=None, status=None, initialised=None):
         self.title = title
