@@ -5,7 +5,6 @@ from markupsafe import escape
 from flask_bootstrap import Bootstrap
 from flask_datepicker import datepicker
 
-from application.views import latest_tasks
 
 def create_app(test_config=None):
     # create and configure the app

@@ -18,9 +18,9 @@
                 </ul>
                 <h4>Latest tasks</h4>
                 {% for task in latest %}
-                    <div>
-                        {{ task['title'] }}{{ task['description'] }}{{ task['status'] }}{{ task['initialised'] }}
-                    </div>
+                    <ul>
+                        <li>{{ task['title'] }}{{ task['description'] }}{{ task['initialised'] }}</li>
+                    </ul>
                 {% endfor %}
             </div>
             <div id="content" class="" >
