@@ -2,7 +2,7 @@
 {% block content %}
     <h2>List of tasks</h2>
     <ul class="nav flex-column">
-        <li><a href="{{ url_for('index', status = 'all') }}">all</a></li>
+        <li><a href="{{ url_for('index') }}">all</a></li>
         <li><a href="{{ url_for('index', status = 'todo') }}">todo</a></li>
         <li><a href="{{ url_for('index', status = 'doing') }}">doing</a></li>
         <li><a href="{{ url_for('index', status = 'done') }}">done</a></li>
