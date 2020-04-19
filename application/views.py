@@ -1,6 +1,7 @@
 from flask import (
     Blueprint, render_template, request, redirect, url_for
 )
+from markupsafe import escape
 from datetime import datetime
 from application.models import Task
 from application.database import db_session
@@ -11,8 +12,16 @@ bp = Blueprint('views', __name__)
 #
 @bp.route('/')
 @bp.route('/tasks/')
-def index():
-    tasks = db_session.query(Task).all()
+@bp.route('/tasks/<status>')
+def index(status=None):
+    if status == 'todo':
+        tasks = db_session.query(Task).filter_by(status = 'todo')
+    elif status == 'doing':
+        tasks = db_session.query(Task).filter_by(status = 'doing')
+    elif status == 'done':
+        tasks = db_session.query(Task).filter_by(status = 'done')
+    else:
+        tasks = db_session.query(Task).all()
     return render_template('tasks/index.html', tasks=tasks)
 
 #
@@ -41,6 +50,7 @@ def update_task(id):
         task.description = request.form['description'],
         task.status = request.form['status'],
         task.initialised = request.form['initialised']
+        #task.updated = request.form['updated']
         db_session.commit()
         return redirect(url_for('index'))
     else:

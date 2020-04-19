@@ -10,12 +10,14 @@ class Task(Base):
     description = Column(Text, nullable=False)
     status = Column(String(255), nullable=False)
     initialised = Column(DateTime, nullable=False, default=datetime.utcnow)
+    #updated = Column(DateTime, nullable=True, default=datetime.utcnow)
 
     def __init__(self, title=None, description=None, status=None, initialised=None):
         self.title = title
         self.description = description
         self.status = status
         self.initialised = initialised
+        #self.updated = updated
 
     def __repr__(self):
         return '<Task %r>' % (self.id)
